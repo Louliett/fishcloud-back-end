@@ -23,6 +23,23 @@ router.post('/create-user', (req, res) => {
     });
 });
 
-
+//check if email exists in db
+router.post('/check-email', (req, res) => {
+    var email = req.body.email;
+    sql = "SELECT email " +
+          "FROM user " +
+          "WHERE email = ?;";
+    connection.query(sql, [email], (err, rows, fields) => {
+        if (err) {
+            res.send(err);
+        } else {
+            if (rows == 0) {
+                res.send(false);
+            } else {
+                res.send(true);
+            }
+        }
+    });
+});
 
 module.exports = router;
