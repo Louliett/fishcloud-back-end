@@ -1,0 +1,9 @@
+# Folders
+node_modules/
+public/fish_images
+
+
+# Files
+db.js
+package-lock.json
+package.json
