@@ -37,15 +37,27 @@ function checkFileType(file, cb) {
     }
 }
 
+//upload fish
+router.post('/upload-fish', (req, res) => {
+    sql = "INSERT INTO fish_info (fish_id, kg, length, width) " +
+          "VALUES ((SELECT id FROM fish WHERE name = ?), ?, ?, ?); " +
+          "INSERT INTO location_info (location_id, latitude, longitude) " +
+          "VALUES ((SELECT id FROM fish WHERE name = ?), ?, ?); " +
+          "INSERT INTO caught_fish (user_id, fish_info_id, location_info_id) " +
+          "VALUES (?, '6', '1');"
+});
+
+//upload image
+router.post('/upload-fish-image', (req, res) => {
+
+});
+
 //temporary method
-router.get('/fish-locations', (req, res) => {
-    sql = "SELECT location.name AS loc_name, location_info.latitude, location_info.longitude, " +
-          "fish.name AS fish_name, fish.family, fish.colour, fish_info.kg, fish_info.length, fish_info.width " +
+router.get('/locations', (req, res) => {
+    sql = "SELECT DISTINCT location.name AS loc_name, location_info.latitude, location_info.longitude " +
           "FROM caught_fish " +
           "JOIN location_info ON location_info_id = location_info.id " +
-          "JOIN location ON location_info.location_id = location.id " +
-          "JOIN fish_info ON fish_info_id = fish_info.id " +
-          "JOIN fish on fish_info.fish_id = fish.id;";
+          "JOIN location ON location_info.location_id = location.id; ";
     
     connection.query(sql, (err, rows, fields) => {
         if(err) {
@@ -75,5 +87,8 @@ router.post('/location-fish', (req, res) => {
         }
     });
 });
+
+
+
 
 module.exports = router;
