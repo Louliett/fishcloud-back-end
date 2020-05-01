@@ -53,7 +53,7 @@ upload_fish_btn.addEventListener("click", ()=>{
         redirect: 'follow'
     };
 
-    fetch("http://localhost:3001/fish/upload-fish", requestOptions)
+    fetch("https://fishcloud.azurewebsites.net/fish/upload-fish", requestOptions)
         .then(response => response.text())
         .then(result => console.log(result))
         .catch(error => console.log('error', error));
