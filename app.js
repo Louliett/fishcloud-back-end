@@ -7,7 +7,8 @@ const cors = require('cors');
 const bodyparser = require('body-parser');
 //routes
 const users_route = require('./api/routes/users');
-const fish_route = require('./api/routes/fish')
+const fish_route = require('./api/routes/fish');
+const location_route = require('./api/routes/locations');
 var app = express();
 
 
@@ -19,6 +20,7 @@ app.use(bodyparser.json()); // IDEA: add limit
 //API routes
 app.use('/users', users_route);
 app.use('/fish', fish_route);
+app.use('/locations', location_route);
 //Static files
 app.use('/public', express.static('public'));
 
