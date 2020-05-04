@@ -53,9 +53,10 @@ router.post('/upload-fish', upload.single("fishImage"), (req, res) => {
 
     var data = req.body;
     var img = req.file;
+    var url = img.destination + img.filename;
     var values = [data.fish_name, data.kg, data.length, data.width, 
         data.location_name, data.latitude, data.longitude, data.user_id, 
-        data.timestamp, img.filename, img.destination, img.filename];
+        data.timestamp, url, url];
 
     sql = "INSERT INTO fish_info (fish_id, kg, length, width) " +
           "VALUES ((SELECT id FROM fish WHERE name = ?), ?, ?, ?); " +
@@ -65,10 +66,10 @@ router.post('/upload-fish', upload.single("fishImage"), (req, res) => {
           "SET @locID = LAST_INSERT_ID();" +
           "INSERT INTO caught_fish (user_id, fish_info_id, location_info_id, timestamp) " +
           "VALUES (?, @fishID, @locID, ?);" +
-          "INSERT INTO image(name, path) " +
-          "VALUES(?, ?); " +
+          "INSERT INTO image(url) " +
+          "VALUES(?); " +
           "INSERT INTO fish_image(fish_info_id, image_id) " +
-          "VALUES(@fishID, (SELECT id FROM image where name = ?)); ";
+          "VALUES(@fishID, (SELECT id FROM image where url = ?)); ";
     
     connection.query(sql, values, (err, rows, fields) => {
         if(err) {
@@ -83,12 +84,13 @@ router.post('/upload-fish', upload.single("fishImage"), (req, res) => {
 //get fish caught in specific location
 router.post('/fish-in-location', (req, res) => {
     var location = req.body.location;
-    sql = "SELECT fish.name, fish.family, fish.colour, fish.default_image, fish_info.kg, fish_info.length, fish_info.width " +
+    sql = "SELECT fish.name, fish.family, fish.colour, fish.default_image, fish_info.kg, " +
+          "fish_info.length, fish_info.width, location_info.latitude, location_info.longitude " +
           "FROM caught_fish " +
-          "JOIN location_info ON location_info_id = location_info.id " +
-          "JOIN location ON location_info.location_id = location.id " +
           "JOIN fish_info ON fish_info_id = fish_info.id " +
           "JOIN fish on fish_info.fish_id = fish.id " +
+          "JOIN location_info ON caught_fish.location_info_id = location_info.id " +
+          "JOIN location ON location_info.location_id = location.id " +
           "WHERE location.name = ?;";
 
     connection.query(sql, [location], (err, rows, fields) => {
