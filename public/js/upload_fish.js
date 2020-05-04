@@ -29,7 +29,7 @@ upload_fish_btn.addEventListener("click", ()=>{
     fish_length = fish_length_input.value;
     fish_width = fish_width_input.value;
     location_name = location_name_input.value;
-    latitude = location_name_input.value;
+    latitude = latitude_input.value;
     longitude = longitude_input.value;
     time = date.getTime();
     image_name = fileInput.files[0];
@@ -53,7 +53,7 @@ upload_fish_btn.addEventListener("click", ()=>{
         redirect: 'follow'
     };
 
-    fetch("https://fishcloud.azurewebsites.net/fish/upload-fish", requestOptions)
+    fetch("http://localhost:3001/fish/upload-fish", requestOptions)
         .then(response => response.text())
         .then(result => console.log(result))
         .catch(error => console.log('error', error));
