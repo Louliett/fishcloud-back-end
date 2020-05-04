@@ -8,10 +8,10 @@ const router = express.Router();
 var sql;
 
 
-//get locations in which fish was caught
-router.get('/locations', (req, res) => {
-    sql = "SELECT DISTINCT location.name AS loc_name, location_info.latitude, " +
-          "location_info.longitude, caught_fish.timestamp " +
+//get distinct locations in which fish was caught
+router.get('/', (req, res) => {
+    sql = "SELECT DISTINCT location.name, location.latitude, " +
+          "location.longitude " +
           "FROM caught_fish " +
           "JOIN location_info ON location_info_id = location_info.id " +
           "JOIN location ON location_info.location_id = location.id; ";
