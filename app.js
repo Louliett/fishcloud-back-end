@@ -27,11 +27,13 @@ app.use('/public', express.static('public'));
 //error handling (should always be last!)
 app.use((req, res, next) => {
   console.log(req);
-  
   const error = new Error('Not Found');
   error.status = 404;
   next(error);
 });
 
+app.get('/favicon.ico', (req, res) => {
+  res.sendFile("favicon.ico");
+});
 
 module.exports = app;

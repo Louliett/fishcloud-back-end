@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <title>Upload Fish Test</title>
+        <link rel="stylesheet" href="../css/fish.css">
+        <link rel="icon" href="../../favicon.ico">
+</head>
+
+<body>
+        <nav>
+            <a href="fish.html">Create Fish</a> |
+            <a href="locations.html">Create Locations</a> |
+            <a href="users.html">View Users</a> |
+            <a href="upload_fish.html">Upload Fish</a> |
+            <a href='' id='logout' onclick="return false;">Logout</a>
+        </nav>
+
+        <br>
+
+    <div class="create_content">
+            <label>User</label>
+            <br>
+            <select id="user_email">
+                <option></option>
+            </select>
+            <br>
+            <label>Fish name</label>
+            <br>
+            <select id="fish_name">
+                <option></option>
+            </select>
+            <br>
+            <label>Fish kg</label>
+            <br>
+            <input type="text" id="fish_kg">
+            <br>
+            <label>Fish length</label>
+            <br>
+            <input type="text" id="fish_length">
+            <br>
+            <label>Fish width</label>
+            <br>
+            <input type="text" id="fish_width">
+            <br>
+            <label>Location name</label>
+            <br>
+            <select id="location_name">
+                <option></option>
+            </select>
+            <br>
+            <label>Latitude</label>
+            <br>
+            <input type="text" id="latitude">
+            <br>
+            <label>Longitude</label>
+            <br>
+            <input type="text" id="longitude">
+            <br>
+            <label>Upload an Image</label>
+            <br>
+            <input type="file" id="fish_image">
+            <br>
+            <br>
+            <button type="button" id="upload_fish">Upload Fish</button>
+    </div><div class="create_content bigger" id="fish_table_div">
+        <table>
+            <thead>
+                <tr>
+                    <th> Email </th>
+                    <th> Location </th>
+                    <th> Latitude </th>
+                    <th> Longitude </th>
+                    <th> Fish </th>
+                    <th> Weight </th>
+                    <th> Length </th>
+                    <th> Width </th>
+                    <th> Image </th>
+                    <th> Delete </th>
+                </tr>
+            </thead>
+            <tbody id="catch_table_body"></tbody>
+        </table>
+    </div>
+    
+    <div class="create_content">
+        
+    </div>
+
+    <script type="module" src="../js/upload_fish.js"></script>
+</body>
+
+
+</html>

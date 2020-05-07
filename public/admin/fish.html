@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <title>Create Fish</title>
+    <link rel="stylesheet" href="../css/fish.css">
+    <link rel="icon" href="../../favicon.ico">
+</head>
+
+<body>
+    <nav>
+        <a href="fish.html">Create Fish</a> |
+        <a href="locations.html">Create Locations</a> |
+        <a href="users.html">View Users</a> |
+        <a href="upload_fish.html">Upload Fish</a> |
+        <a href='' id='logout' onclick="return false;">Logout</a>
+    </nav>
+
+    <br>
+
+    <div class="create_content smaller" id="create_fish_div">
+        <label>Name</label>
+        <br>
+        <input type="text" id="fish_name">
+        <br>
+        <label>Family</label>
+        <br>
+        <input type="text" id="fish_family">
+        <br>
+        <label>Colour</label>
+        <br>
+        <input type="text" id="fish_colour">
+        <br>
+        <label>Description</label>
+        <br>
+        <input type="text" id="fish_description">
+        <br>
+        <label>Upload an Image</label>
+        <br>
+        <input type="file" id="fish_image">
+        <br>
+        <br>
+        <button type="button" id="create_fish">Create Fish</button>
+    </div><div class="create_content bigger" id="fish_table_div">
+      <table>
+          <thead>
+              <tr>
+                  <th> Name </th>
+                  <th> Family </th>
+                  <th> Colour </th>
+                  <th> Description </th>
+                  <th> Image </th>
+                  <th> Delete </th>
+              </tr>
+          </thead>
+          <tbody id="fish_table_body"></tbody>
+      </table>
+    </div>
+
+    <script type="module" src="../js/fish.js"></script>
+</body>
+
+
+</html>

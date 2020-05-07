@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <title>Create Location</title>
+    <link rel="stylesheet" href="../css/fish.css">
+    <link rel="icon" href="../../favicon.ico">
+</head>
+
+<body>
+    <nav>
+        <a href="fish.html">Create Fish</a> |
+        <a href="locations.html">Create Locations</a> |
+        <a href="users.html">View Users</a> |
+        <a href="upload_fish.html">Upload Fish</a> |
+        <a href='' id='logout' onclick="return false;">Logout</a>
+    </nav>
+    <br>
+    <div class="create_content" id="users_table_div">
+        <table>
+            <thead>
+                <tr>
+                    <th> Name </th>
+                    <th> Email </th>
+                    <th> Delete </th>
+                </tr>
+            </thead>
+            <tbody id="users_table_body"></tbody>
+        </table>
+    </div>
+
+    <script type="module" src="../js/users.js"></script>
+</body>
+
+
+</html>

@@ -72,4 +72,42 @@ router.post('/register-user', (req, res) => {
     });
 });
 
+//select all users
+router.get('/', (req, res) => {
+    sql = "SELECT * FROM user;";
+    connection.query(sql, (err, rows, fields) => {
+        if (err) {
+            res.send(err);
+        } else {
+            res.send(rows);
+        }
+    });
+});
+
+//get all users emails
+router.get('/email', (req, res) => {
+    sql = "SELECT email FROM user;";
+    connection.query(sql, (err, rows, fields) => {
+        if (err) {
+            res.send(err);
+        } else {
+            res.send(rows);
+        }
+    });
+});
+
+
+//delete user
+router.delete('/delete', (req, res) => {
+    var id = req.body.id;
+    sql = "DELETE FROM user WHERE id = ?";
+    connection.query(sql, id, (err, rows, fields) => {
+        if (err) {
+            res.send(err);
+        } else {
+            res.send("user deleted!")
+        }
+    });
+});
+
 module.exports = router;

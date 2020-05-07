@@ -1,0 +1,23 @@
+.create_content {
+    display: inline-block;
+    box-sizing: border-box;
+    vertical-align: top;
+    height: 300px;
+}
+
+.smaller {
+    width: 30%;
+}
+
+.bigger {
+    width: 69%;
+}
+
+table,
+th,
+td {
+    border: solid 1px #DDD;
+    border-collapse: collapse;
+    padding: 2px 3px;
+    text-align: center;
+}
