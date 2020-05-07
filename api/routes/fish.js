@@ -92,7 +92,7 @@ router.post('/create-fish', upload.single("defaultImage"), (req, res) => {
 //get fish caught in specific location
 router.post('/fish-in-location', (req, res) => {
     var location = req.body.location;
-    sql = "SELECT fish.name, fish.family, fish.colour, fish.default_image, fish_info.kg, " +
+    sql = "SELECT timestamp, fish.name, fish.family, fish.colour, fish.default_image, fish_info.kg, " +
           "fish_info.length, fish_info.width, location_info.latitude, location_info.longitude, " +
           "image.url " +
           "FROM caught_fish " +
