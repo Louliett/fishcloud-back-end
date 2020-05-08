@@ -89,7 +89,7 @@ for(var i=0;i<globalData.length;i++){
             title: locationName,
             map: map
           });
-             marker.addEventListener('click',()=>{
+             marker.addListener('click',()=>{
                $('html, body').animate({
                  scrollTop: 700
                }, 400);
