@@ -72,6 +72,31 @@ router.post('/register-user', (req, res) => {
     });
 });
 
+
+//login admin on the web page
+router.post('/login', (req, res) => {
+    var email = req.body.email;
+    var name = req.body.name;
+    var values = [name, email];
+
+    sql = "SELECT * " +
+          "FROM user " +
+          "WHERE email = ?;";
+
+
+    connection.query(sql, [email], (err, rows, fields) => {
+        if (err) {
+            res.send(err);
+        } else {
+            if (rows == 0) {
+                res.send(false);
+            } else {
+                res.send(rows);
+            }
+        }
+    });
+});
+
 //select all users
 router.get('/', (req, res) => {
     sql = "SELECT * FROM user;";
