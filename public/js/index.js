@@ -90,7 +90,7 @@ for(var i=0;i<globalData.length;i++){
             map: map
           });
              marker.addListener('click',()=>{
-function(){$('html, body').animate({
+$('html, body').animate({
         scrollTop: 700;
     }, 400);
         
