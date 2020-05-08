@@ -1,4 +1,17 @@
 "use strict"
+//cookies
+read_cookie('admin');
+function read_cookie(key) {
+    var result;
+    (result = new RegExp('(?:^|; )' + encodeURIComponent(key) + '=([^;]*)').exec(document.cookie)) ? (result[1]) : null;
+    //console.log(result, typeof(result));
+    if (result == null || result[1] != "1") {
+        document.innerHTML = "PERMISSION DENIED!";
+        location.href = "/public";
+    }
+
+}
+
 
 var fish_table = document.getElementById('fish_table_body');
 var create_fish = document.getElementById('create_fish');
@@ -8,6 +21,8 @@ var family_input = document.getElementById('fish_family');
 var colour_input = document.getElementById('fish_colour');
 var description_input = document.getElementById('fish_description');
 var fileInput = document.getElementById('fish_image');
+
+
 var fish_name;
 var fish_family;
 var fish_colour;
@@ -15,12 +30,15 @@ var fish_description;
 var image_name;
 var image_path;
 
+
+
+
 var requestOptions = {
     method: 'GET',
     redirect: 'follow'
 };
 
-fetch("http://localhost:3001/fish/get-info", requestOptions)
+fetch("https://fishcloud.azurewebsites.net/fish/get-info", requestOptions)
     .then(response => response.json())
     .then(data => {
         if (data.length > 0) {
@@ -77,7 +95,7 @@ fetch("http://localhost:3001/fish/get-info", requestOptions)
             redirect: 'follow'
         };
 
-        fetch("http://localhost:3001/fish/create-fish", requestOptions)
+        fetch("https://fishcloud.azurewebsites.net/fish/create-fish", requestOptions)
             .then(response => response.text())
             .then((result) => {
                 console.log(result);
@@ -106,10 +124,11 @@ fetch("http://localhost:3001/fish/get-info", requestOptions)
             redirect: 'follow'
         };
 
-        fetch("http://localhost:3001/fish/delete-info", requestOptions)
+        fetch("https://fishcloud.azurewebsites.net/fish/delete-info", requestOptions)
             .then(response => response.text())
             .then((result) => {
                 console.log(result);
                 location.reload();
             }).catch(error => console.log('error', error));
     }
+

@@ -29,13 +29,14 @@ login_btn.addEventListener("click", () => {
             redirect: 'follow'
         };
 
-        fetch("http://localhost:3001/users/login", requestOptions)
+        fetch("https://fishcloud.azurewebsites.net/users/login", requestOptions)
             .then(response => response.json())
             .then(result => {
                 if (result === false) {
                     errormsg.innerHTML = "Incorrect email and password";
                 } else {
                     if (result[0].password === password) {
+                        document.cookie = "admin=1; path=/;";
                         location.href = "/public/admin/fish.html";
                     } else {
                         errormsg.innerHTML = "Incorrect password";

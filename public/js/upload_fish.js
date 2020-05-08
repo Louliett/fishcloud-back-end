@@ -39,7 +39,7 @@ var requestOptions = {
     redirect: 'follow'
 };
 
-fetch("http://localhost:3001/users/email", requestOptions)
+fetch("https://fishcloud.azurewebsites.net/users/email", requestOptions)
     .then(response => response.json())
     .then(result => {
       for (var i = 0; i < result.length; i++) {
@@ -55,7 +55,7 @@ fetch("http://localhost:3001/users/email", requestOptions)
       }
     }).catch(error => console.log('error', error));
 
-fetch("http://localhost:3001/fish/get-name", requestOptions)
+fetch("https://fishcloud.azurewebsites.net/fish/get-name", requestOptions)
     .then(response => response.json())
     .then(result => {
         for (var i = 0; i < result.length; i++) {
@@ -71,7 +71,7 @@ fetch("http://localhost:3001/fish/get-name", requestOptions)
         }
     }).catch(error => console.log('error', error));
 
-fetch("http://localhost:3001/locations/get-name", requestOptions)
+fetch("https://fishcloud.azurewebsites.net/locations/get-name", requestOptions)
     .then(response => response.json())
     .then(result => {
         for (var i = 0; i < result.length; i++) {
@@ -89,7 +89,7 @@ fetch("http://localhost:3001/locations/get-name", requestOptions)
 
 
 //let's populate the table now shall we?
-fetch("http://localhost:3001/fish/catch-list", requestOptions)
+fetch("https://fishcloud.azurewebsites.net/fish/catch-list", requestOptions)
     .then(response => response.json())
     .then(data => {
         if (data.length > 0) {
@@ -156,7 +156,7 @@ function deleteCatch(email, location_id, fish_id, url) {
                 redirect: 'follow'
             };
 
-            fetch("http://localhost:3001/fish/delete-catch", requestOptions)
+            fetch("https://fishcloud.azurewebsites.net/fish/delete-catch", requestOptions)
                 .then(response => response.text())
                 .then((result) => {
                     console.log(result);
@@ -198,7 +198,7 @@ upload_fish_btn.addEventListener("click", ()=>{
         redirect: 'follow'
     };
 
-    fetch("http://localhost:3001/fish/upload-fish", requestOptions)
+    fetch("https://fishcloud.azurewebsites.net/fish/upload-fish", requestOptions)
         .then(response => response.text())
         .then(result => {
             console.log(result)

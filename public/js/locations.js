@@ -15,7 +15,7 @@ var requestOptions = {
 };
 
 
-fetch("http://localhost:3001/locations/all", requestOptions)
+fetch("https://fishcloud.azurewebsites.net/locations/all", requestOptions)
     .then(response => response.json())
     .then(data => {
         if (data.length > 0) {
@@ -71,7 +71,7 @@ create_location.addEventListener("click", () => {
 
     
 
-    fetch("http://localhost:3001/locations/create", requestOptions)
+    fetch("https://fishcloud.azurewebsites.net/locations/create", requestOptions)
         .then(response => response.text())
         .then((result) => {
             console.log(result);
@@ -99,7 +99,7 @@ function deleteLocation(id) {
         redirect: 'follow'
     };
 
-    fetch("http://localhost:3001/locations/delete", requestOptions)
+    fetch("https://fishcloud.azurewebsites.net/locations/delete", requestOptions)
         .then(response => response.text())
         .then((result) => {
             console.log(result);

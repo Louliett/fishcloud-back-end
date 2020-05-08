@@ -14,6 +14,12 @@
         <a href="users.html">View Users</a> |
         <a href="upload_fish.html">Upload Fish</a> |
         <a href='' id='logout' onclick="return false;">Logout</a>
+        <script>
+        document.getElementById('logout').addEventListener("click", () => {
+            document.cookie = "admin='-1';path=/;";
+            location.href = "/public";
+        });
+        </script>
     </nav>
 
     <br>

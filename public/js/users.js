@@ -8,7 +8,7 @@ var requestOptions = {
     redirect: 'follow'
 };
 
-fetch("http://localhost:3001/users/", requestOptions)
+fetch("https://fishcloud.azurewebsites.net/users/", requestOptions)
     .then(response => response.json())
     .then(data => {
         if (data.length > 0) {
@@ -56,7 +56,7 @@ function deleteUser(id) {
         redirect: 'follow'
     };
 
-    fetch("http://localhost:3001/users/delete", requestOptions)
+    fetch("https://fishcloud.azurewebsites.net/users/delete", requestOptions)
         .then(response => response.text())
         .then((result) => {
             console.log(result);
