@@ -262,9 +262,12 @@ lake.append($("<option></option>")
                     .text( data[i]['name'])); 
         
   var marker = new google.maps.Marker({position: uluru, map: map, title: data[i]['name']});
-    marker.addListener('click',()=>{
-    map.setCenter(marker.getPosition());
-                    map.setZoom(12);
+    google.maps.event.addListener(marker,'click',function(e) {
+                map.setZoom(13);
+                map.setCenter(e.latLng);
+            });
+        marker.addListener('click',()=>{
+    
         loadData(event.target.title);
     })
         mainMarkers.push(marker);
