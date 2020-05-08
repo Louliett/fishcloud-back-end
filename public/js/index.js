@@ -90,8 +90,10 @@ for(var i=0;i<globalData.length;i++){
             map: map
           });
              marker.addListener('click',()=>{
-
-        loadData(event.target.title)
+function(){$('html, body').animate({
+        scrollTop: 700;
+    }, 400);
+        
         $('.markerInfo').css('visibility','visible');
        
     })
