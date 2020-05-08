@@ -91,7 +91,7 @@ for(var i=0;i<globalData.length;i++){
           });
              marker.addEventListener('click',()=>{
                $('html, body').animate({
-                 scrollTop: 700;
+                 scrollTop: 700
                }, 400);
         
         $('.markerInfo').css('visibility','visible');
