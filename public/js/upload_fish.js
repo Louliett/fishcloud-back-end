@@ -112,7 +112,7 @@ fetch("https://fishcloud.azurewebsites.net/fish/catch-list", requestOptions)
                 tempp += "<td>" + u.length + "</td>";
                 tempp += "<td>" + u.width + "</td>";
                 tempp += "<td data-url= " + u.url + "><img src=" + s2 + " style='width:100px;height:60px;'></img></td>";
-                tempp += "<td>" + "<button type='button' class='del_catch_button' data-email= " + u.email + " data-location-id= " + u.loc_id + " data-fish-id= " + u.fish_id + " data-url= " + u.url + "> Delete </button>" + "</td>";
+                tempp += "<td>" + "<button type='button' class='del_catch_button' data-email= '" + u.email + "' data-location-id= '" + u.loc_id + "' data-fish-id= '" + u.fish_id + "' data-url= '" + u.url + "'> Delete </button>" + "</td>";
                 tempp += "</tr>";
             });
             catch_table.innerHTML = tempp;
@@ -147,6 +147,7 @@ function deleteCatch(email, location_id, fish_id, url) {
                 'url': url
             };
 
+            console.log(data);
             var raw = JSON.stringify(data);
 
             var requestOptions = {
@@ -160,7 +161,7 @@ function deleteCatch(email, location_id, fish_id, url) {
                 .then(response => response.text())
                 .then((result) => {
                     console.log(result);
-                    location.reload();
+                    //location.reload();
                 }).catch(error => console.log('error', error));
 }
 
